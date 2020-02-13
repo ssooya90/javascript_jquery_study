@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div>
+	<select id="test1" class="test" onchange="selectEvent(this)">
+		<option value="1">옵션1</option>
+		<option value="2" selected>옵션2</option>
+	</select>
+
+	<select id="test2" class="test">
+		<option value="3">옵션3</option>
+		<option value="4" selected>옵션4</option>
+	</select>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script>
+
+
+	var select = document.getElementById('test1')
+
+	// 자바스크립트 객체
+	console.log(select);
+	console.log(select.options[select.selectedIndex].value); // 정상
+
+
+	function selectEvent(e){
+
+		console.log(e); // JAVASCRIPT Object
+		console.log(e[e.selectedIndex].value); // 값 나옴
+
+		console.log($(e)); // JQUERY Wrapping Object
+		console.log($(e)[$(e).selectedIndex].value); // 에러
+
+		var jquerySelect = $(e)[0]; // 랩핑된 selectBox Object를 꺼냄, JAVASCRIPT Object와 같음
+		console.log(jquerySelect[jquerySelect.selectedIndex].value) // 값 나옴
+
+	}
+
+</script>
+</body>
+</html>
